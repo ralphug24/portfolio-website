@@ -43,12 +43,18 @@ function Icon({ name, ...props }) {
 
 function Nav({ theme, setTheme, active, navigate }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
   const links = [
     { id: "home", n: "00", label: "Home" },
@@ -59,10 +65,10 @@ function Nav({ theme, setTheme, active, navigate }) {
     { id: "resume", n: "05", label: "Resume" },
   ];
 
-  const go = (e, id) => { e.preventDefault(); navigate(id); };
+  const go = (e, id) => { e.preventDefault(); navigate(id); setMenuOpen(false); };
 
   return (
-    <nav className="nav" data-scrolled={scrolled}>
+    <nav className="nav" data-scrolled={scrolled} data-open={menuOpen}>
       <div className="nav-inner">
         <a href="#home" className="nav-brand" onClick={(e) => go(e, "home")}>
           <span className="nav-dot" />
@@ -78,6 +84,28 @@ function Nav({ theme, setTheme, active, navigate }) {
         <button className="theme-toggle" onClick={() => setTheme(theme === "dark" ? "light" : "dark")} aria-label="Toggle theme">
           <Icon name={theme === "dark" ? "sun" : "moon"} width="16" height="16" />
         </button>
+        <button
+          className="nav-burger"
+          onClick={() => setMenuOpen(o => !o)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+        >
+          <span /><span /><span />
+        </button>
+      </div>
+      <div className="nav-drawer" aria-hidden={!menuOpen}>
+        {links.map(l => (
+          <a
+            key={l.id}
+            href={`#${l.id}`}
+            className="nav-drawer-link"
+            data-active={active === l.id}
+            onClick={(e) => go(e, l.id)}
+          >
+            <span className="n">{l.n}</span>
+            <span>{l.label}</span>
+          </a>
+        ))}
       </div>
     </nav>
   );
