@@ -10,18 +10,18 @@ function Home({ navigate }) {
           <div>
             <div className="hero-eyebrow reveal">
               <span className="dot" />
-              <span>PhD · Human-Centered Computing · Clemson</span>
+              <span>Agentic AI · AI Technical Program Management · Clemson</span>
             </div>
             <h1 className="hero-title reveal" data-delay="1">
-              Designing <span className="serif">human–AI</span><br/>
-              systems that make<br/>
-              people think <span className="serif">better.</span>
+              Building <span className="serif">agentic AI</span><br/>
+              systems that help<br/>
+              teams execute <span className="serif">better.</span>
             </h1>
             <p className="hero-lede reveal" data-delay="2">
-              I&rsquo;m <strong>Ralph</strong> — a researcher and builder working at the
-              intersection of AI, HCI, and system design. I build and study LLM-powered
-              tools that support reasoning, learning, and decision-making, without
-              quietly replacing the thinking they&rsquo;re meant to help.
+              I&rsquo;m <strong>Ralph</strong> — an AI technical program manager and
+              human-centered AI researcher who turns ambiguous problems into usable
+              systems, clear roadmaps, and measurable outcomes. I work across agentic
+              AI, LLM evaluation, enterprise data, and product execution.
             </p>
             <div className="hero-actions reveal" data-delay="3">
               <a href="#projects" className="btn btn-primary" onClick={(e) => go(e, "projects")}>
@@ -86,21 +86,21 @@ function About() {
           </div>
           <div className="prose reveal" data-delay="1">
             <p>
-              I&rsquo;m a PhD student in <strong>Human-Centered Computing</strong> at
-              Clemson University, where I focus on building and studying AI-powered
-              systems that shape how people think, learn, and make decisions.
+              I&rsquo;m an <strong>Agentic AI and Human-Centered Computing researcher</strong> at
+              Clemson University focused on building and operationalizing AI-enabled
+              systems, enterprise applications, and data/reporting platforms.
             </p>
             <p>
-              My work sits at the intersection of <strong>AI, human-computer
-              interaction, and system design</strong>. I&rsquo;m particularly interested
-              in how large language models can be integrated into real-world tools in
-              ways that support deeper understanding rather than shortcutting it.
+              My work sits at the intersection of <strong>AI systems, product execution,
+              enterprise technology, and human-computer interaction</strong>. I translate
+              ambiguous stakeholder needs into requirements, workflows, dashboards,
+              architecture recommendations, and execution-ready solutions.
             </p>
             <p>
-              Currently, I work on <strong>Quizzibility</strong>, an AI-driven platform
-              for interactive learning and assessment. Through this work, I design and
-              implement features such as LLM-based feedback, misconception analysis,
-              and adaptive interaction flows, while studying how these systems
+              Currently, I work on <strong>Quizzibility</strong>, an AI-powered platform
+              for interactive learning and assessment. I design LLM-powered submission
+              analysis, misconception clustering, condition-based feature gating, and
+              human-centered interaction improvements while studying how these systems
               influence user behavior.
             </p>
             <blockquote>
@@ -108,10 +108,10 @@ function About() {
               what people do.
             </blockquote>
             <p>
-              More broadly, I&rsquo;m interested in building human–AI systems that
-              improve reasoning, not replace it — with applications that extend beyond
-              education into <strong>developer tools, productivity systems, and AI
-              copilots</strong>.
+              I&rsquo;m interested in AI/ML technical program management, AI product
+              operations, LLM evaluation, AI systems, and enterprise AI automation —
+              especially where technical depth, human-centered thinking, and disciplined
+              execution matter.
             </p>
           </div>
         </div>
@@ -120,7 +120,7 @@ function About() {
   );
 }
 
-function ProjectCard({ p, idx }) {
+function ProjectCard({ p, idx, onOpen }) {
   const ref = useR(null);
   const onMove = (e) => {
     const r = ref.current.getBoundingClientRect();
@@ -128,7 +128,7 @@ function ProjectCard({ p, idx }) {
     ref.current.style.setProperty("--my", (e.clientY - r.top) + "px");
   };
   return (
-    <article ref={ref} className="project reveal" data-delay={Math.min(idx, 3)} onMouseMove={onMove}>
+    <article ref={ref} className="project reveal project-clickable" data-delay={Math.min(idx, 3)} onMouseMove={onMove} onClick={() => onOpen(p)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onOpen(p); } }} tabIndex="0" role="button" aria-label={`Read case study: ${p.title}`}>
       <div className="project-head">
         <span>{p.tag}</span>
         <span className="project-status"><span className="now-ping" />{p.status}</span>
@@ -138,18 +138,43 @@ function ProjectCard({ p, idx }) {
       <div className="project-stack">
         {p.stack.map(s => <span key={s} className="stack-tag">{s}</span>)}
       </div>
+      <span className="project-open">Read case study <Icon name="arrow" width="13" height="13" /></span>
+    </article>
+  );
+}
+
+function ProjectDetail({ p, onBack }) {
+  return (
+    <article className="case-study reveal">
+      <button className="case-back" onClick={onBack}><Icon name="arrow" width="13" height="13" /> Back to projects</button>
+      <div className="case-kicker">{p.tag} · {p.status}</div>
+      <h3 className="case-title">{p.title}</h3>
+      <p className="case-role">Role: {p.detail.role}</p>
+      <div className="case-grid">
+        {["challenge", "approach", "outcome", "takeaway"].map((key) => (
+          <div className="case-section" key={key}>
+            <span className="case-label">{key}</span>
+            <p>{p.detail[key]}</p>
+          </div>
+        ))}
+      </div>
+      <div className="project-stack">{p.stack.map(s => <span key={s} className="stack-tag">{s}</span>)}</div>
     </article>
   );
 }
 
 function Projects() {
+  const [selected, setSelected] = useS(null);
   return (
     <section className="section" id="projects">
       <div className="container">
         <SectionHead num="02" title="Projects" sub="/ things I'm building" />
-        <div className="projects-grid">
-          {PROJECTS.map((p, i) => <ProjectCard key={p.title} p={p} idx={i} />)}
-        </div>
+        {selected ? <ProjectDetail p={selected} onBack={() => setSelected(null)} /> : <>
+          <p className="section-intro">Selected work and portfolio builds for Agentic AI, technical program management, human-centered AI, and enterprise data roles. Open a card to read the case study.</p>
+          <div className="projects-grid">
+            {PROJECTS.map((p, i) => <ProjectCard key={p.id} p={p} idx={i} onOpen={setSelected} />)}
+          </div>
+        </>}
       </div>
     </section>
   );
@@ -196,16 +221,14 @@ Answer questions about Ralph based ONLY on the bio below. If asked something out
 Keep answers to 2-4 sentences. Conversational, third-person about Ralph.
 
 BIO:
-- PhD student, Human-Centered Computing at Clemson University (Aug 2023 - Aug 2027). Also M.S. Computer Science (2023-2025).
+- Human-Centered Computing PhD researcher at Clemson University (2023 - 2027) with an M.S. in Computer Science (2023 - 2025).
 - Based in Clemson, SC.
-- Research area: human-AI systems powered by LLMs; intersection of AI, HCI, and system design.
-- Current project: Quizzibility, an AI-driven platform for interactive learning and assessment (LLM feedback, misconception analysis, adaptive interaction flows).
-- 4+ years professional experience before PhD: Research Assistant at DRIVE Lab Clemson (AV HMI program, NHTSA/ViPR GVSC), IT Program Manager at KPMG Nigeria on Zenith Bank digital banking transformation (8000+ users), Business Intelligence Analyst at Intelfort (client NIBSS, Azure Data Factory pipelines).
-- Core skills: requirements gathering, Agile delivery, SQL, Python, Power BI, Tableau, Azure, LLM APIs, React, analytics storytelling.
-- Research questions: how AI systems can support learning/reasoning without encouraging over-reliance; interaction designs for deeper understanding; making AI outputs interpretable.
-- Broader interests: AI copilots, developer tools, agentic systems, productivity, decision support, AI evaluation, trust calibration.
-- Career interests: Business Transformation Consulting, AI Product Engineer/PM, Applied AI/LLM Engineer, Applied Scientist, Human-AI Interaction Researcher. Long-term: exploring his own products/startup in agentic AI.
-- Eligible for CPT, no sponsorship required.
+- Research and practice focus: AI-enabled systems, enterprise applications, data/reporting platforms, human-centered AI, and LLM evaluation.
+- Current project: Quizzibility, an AI-powered platform for interactive learning and assessment (LLM submission analysis, misconception clustering, feature gating, and usability analysis).
+- Professional experience includes AI systems development at Clemson, PMIS and enterprise reporting work at DC Water, digital banking and payments transformation at KPMG Nigeria, and business intelligence at INTELFORT Nigeria.
+- Core skills: technical program management, requirements gathering, SQL, Python, Power BI, Tableau, REST APIs, Oracle Primavera Unifier, Oracle Integration Cloud, LLM APIs, React, TypeScript, and PostgreSQL.
+- Technical interests: agentic systems, enterprise AI automation, AI copilots, developer tools, decision support, and trustworthy human-AI interaction.
+- Career interests: AI/ML Technical Program Manager, AI Product Operations, LLM Evaluation, AI Systems, and Enterprise AI Automation.
 - Philosophy: "The value of AI is not just in what it can do, but in how it changes what people do."
 
 QUESTION: ${question}`;
@@ -261,19 +284,26 @@ QUESTION: ${question}`;
 }
 
 function Blog() {
+  const [selected, setSelected] = useS(null);
   return (
     <section className="section" id="blog">
       <div className="container">
         <SectionHead num="04" title="Blog" sub="Notes from the work" />
-        <div className="writing-list">
-          {NOTES.map((n, i) => (
-            <a key={i} href="#blog" className="note reveal" data-delay={Math.min(i, 3)} onClick={e => e.preventDefault()} title="Coming soon">
+        {!selected ? <div className="writing-list">
+          {BLOG_POSTS.map((n, i) => (
+            <article key={n.title} className="note note-clickable reveal" data-delay={Math.min(i, 3)} onClick={() => setSelected(n)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelected(n); } }} tabIndex="0" role="button">
               <span className="note-date">{n.date}</span>
-              <span className="note-title">{n.title}</span>
-              <span className="note-read">{n.read}</span>
-            </a>
+              <span><span className="note-title">{n.title}</span><span className="note-excerpt">{n.intro}</span></span>
+              <span className="note-read">{n.read} <Icon name="arrow" width="12" height="12" /></span>
+            </article>
           ))}
-        </div>
+        </div> : <article className="case-study reveal blog-detail">
+          <button className="case-back" onClick={() => setSelected(null)}><Icon name="arrow" width="13" height="13" /> Back to write-ups</button>
+          <div className="case-kicker">{selected.date} · {selected.read}</div>
+          <h3 className="case-title">{selected.title}</h3>
+          <p className="case-role">{selected.intro}</p>
+          <div className="case-grid">{selected.sections.map((s) => <div className="case-section" key={s.label}><span className="case-label">{s.label}</span><p>{s.text}</p></div>)}</div>
+        </article>}
         <AskRalph />
       </div>
     </section>
@@ -287,10 +317,11 @@ function Resume() {
         <SectionHead num="05" title="Resume" sub="/ cv · snapshot" />
         <div className="resume-top reveal">
           <p className="resume-intro">
-            PhD researcher with 4+ years driving business transformation through data,
-            analytics, and technology delivery across banking, enterprise platforms,
-            and applied research. I translate ambiguous needs into structured
-            requirements, analytics-driven recommendations, and execution-ready roadmaps.
+              Agentic AI and human-centered computing researcher with experience leading
+              technical programs, AI-enabled product work, enterprise data initiatives,
+              and applied research. I translate ambiguous needs into structured
+              requirements, architecture recommendations, dashboards, and execution-ready
+              roadmaps.
           </p>
           <a href={LINKS.cv} target="_self" rel="noreferrer" className="btn btn-primary">
             <Icon name="download" /> Download full CV

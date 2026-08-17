@@ -1,159 +1,72 @@
 // ============ data ============
 const PROFILE = {
-  name: "Ralph Ugboko",
-  role: "PhD Student, Human-Centered Computing",
+  name: "Raphael Maris Ugboko",
+  role: "Agentic AI / AI Technical Program Manager",
   org: "Clemson University",
   location: "Clemson, SC",
   email: "ralphugboko@gmail.com",
-  blurb: "I design and study human–AI systems that improve how people think, learn, and make decisions.",
+  blurb: "I build and operationalize AI-enabled systems, enterprise applications, and data/reporting platforms that help people make better decisions.",
 };
 
 const LINKS = {
   github: "https://github.com/ralphug24",
-  linkedin: "https://www.linkedin.com/in/ralphugboko/",
+  linkedin: "https://www.linkedin.com/in/raphael-maris-ugboko/",
   email: "mailto:ralphugboko@gmail.com",
-  cv: "assets/Ralph_Ugboko_Resume.pdf",
+  cv: "assets/RESUME_UGBOKO-IBM_Enterprise.pdf",
   photo: "assets/ralph_portrait.jpg",
 };
 
 const TOPICS = [
-  "Human-AI Interaction", "Large Language Models", "Trust Calibration",
-  "Applied AI", "Agentic Systems", "HCI", "Interpretability",
-  "Developer Tools", "AI Evaluation", "Product Thinking",
+  "Agentic AI", "Human-Centered AI", "Technical Program Manager",
+  "Enterprise Data", "LLM Evaluation", "AI Systems", "Product Execution",
 ];
 
 const PUBLICATIONS = [
-  {
-    year: "2024",
-    title: "Accessible Autonomous Vehicles as Symbiotic Autonomous Systems for Users with Disabilities: Preliminary Design Guidelines",
-    venue: "IEEE Xplore",
-    tags: ["AV", "Accessibility", "HCI"],
-    url: "https://ieeexplore.ieee.org/abstract/document/10555877/",
-  },
-  {
-    year: "2025",
-    title: "Strengthening Security, Privacy, and Trust in Artificial Intelligence Software for Critical Infrastructure in the United States",
-    venue: "Working paper",
-    tags: ["AI Trust", "Policy"],
-    url: "https://www.researchgate.net/profile/Oi-Omotosho/publication/391948684_Strengthening_security_privacy_and_trust_in_artificial_intelligence_software_for_critical_infrastructure_in_the_United_States/links/68361651be1b507dce9227fb/Strengthening-security-privacy-and-trust-in-artificial-intelligence-software-for-critical-infrastructure-in-the-United-States.pdf",
-  },
-  {
-    year: "2025",
-    title: "Optimizing Data Pipelines for Real-Time Healthcare Analytics in Distributed Systems: Architectural Strategies, Performance Trade-offs, and Emerging Paradigms",
-    venue: "Working paper",
-    tags: ["Systems", "Healthcare"],
-    url: "https://www.researchgate.net/profile/Oluwafemi-Oloruntoba/publication/393870412_Optimizing_Data_Pipelines_for_Real-Time_Healthcare_Analytics_in_Distributed_Systems_Architectural_Strategies_Performance_Trade-offs_and_Emerging_Paradigms/links/687e5323f312d71d78c89bf2/Optimizing-Data-Pipelines-for-Real-Time-Healthcare-Analytics-in-Distributed-Systems-Architectural-Strategies-Performance-Trade-offs-and-Emerging-Paradigms.pdf",
-  },
-  {
-    year: "2025",
-    title: "Explainable Artificial Intelligence in Autonomous Vehicles: Methodologies, Challenges, and Prospective Directions",
-    venue: "Working paper",
-    tags: ["XAI", "AV"],
-    url: "https://www.researchgate.net/profile/Oluwafemi-Oloruntoba/publication/394345124_Explainable_Artificial_Intelligence_in_Autonomous_Vehicles_Methodologies_Challenges_And_Prospective_Directions/links/68937bf78a487c1ea6d8ce52/Explainable-Artificial-Intelligence-in-Autonomous-Vehicles-Methodologies-Challenges-And-Prospective-Directions.pdf",
-  },
+  { year: "2024", title: "Accessible Autonomous Vehicles as Symbiotic Autonomous Systems for Users with Disabilities: Preliminary Design Guidelines", venue: "2024 IEEE 4th International Conference on Human-Machine Systems", tags: ["AV", "Accessibility", "HCI"], url: "https://ieeexplore.ieee.org/abstract/document/10555877/" },
+  { year: "2025", title: "Optimizing Data Pipelines for Real-Time Healthcare Analytics in Distributed Systems: Architectural Strategies, Performance Trade-offs, and Emerging Paradigms", venue: "International Journal of Scientific and Management Research", tags: ["Data Systems", "Healthcare"], url: "https://www.researchgate.net/profile/Oluwafemi-Oloruntoba/publication/393870412_Optimizing_Data_Pipelines_for_Real-Time_Healthcare_Analytics_in_Distributed_Systems_Architectural_Strategies_Performance_Trade-offs_and_Emerging_Paradigms/links/687e5323f312d71d78c89bf2/Optimizing-Data-Pipelines-for-Real-Time-Healthcare-Analytics-in-Distributed-Systems-Architectural-Strategies-Performance-Trade-offs-and-Emerging-Paradigms.pdf" },
+  { year: "2025", title: "Resilient Geospatial Data Management: A Comparative Analysis of Cloud-Native and Distributed Ledger Technology Synchronization Models for Multi-Cloud Environments", venue: "Springer Journal of Cloud Computing", tags: ["Cloud Systems", "Geospatial Data"], url: "#" },
+  { year: "2025", title: "Explainable Artificial Intelligence in Autonomous Vehicles: Methodologies, Challenges, and Prospective Directions", venue: "IRE Journals", tags: ["XAI", "Autonomous Vehicles"], url: "https://www.researchgate.net/profile/Oluwafemi-Oloruntoba/publication/394345124_Explainable_Artificial_Intelligence_in_Autonomous_Vehicles_Methodologies_Challenges_And_Prospective_Directions/links/68937bf78a487c1ea6d8ce52/Explainable-Artificial-Intelligence-in-Autonomous-Vehicles-Methodologies-Challenges-And-Prospective-Directions.pdf" },
 ];
 
 const PROJECTS = [
-  {
-    title: "Quizzibility",
-    status: "Active",
-    desc: "AI-driven platform for interactive learning and assessment. I design LLM-based feedback, misconception analysis, and adaptive interaction flows, then study how those features shape user behavior.",
-    stack: ["React", "LLMs", "Python", "PostgreSQL"],
-    tag: "Applied Research",
-  },
-  {
-    title: "Trust Calibration Probes",
-    status: "In progress",
-    desc: "Micro-interactions that measure and nudge how much users rely on an AI output — deployed inside decision-support and learning workflows to study over-reliance.",
-    stack: ["React", "Anthropic API", "Study infra"],
-    tag: "Research",
-  },
-  {
-    title: "Misconception Atlas",
-    status: "Prototype",
-    desc: "Operator-facing tool that clusters LLM-labeled user errors into navigable misconception maps — designed for instructors but generalizes to any AI-graded domain.",
-    stack: ["Clustering", "LLM labeling", "D3"],
-    tag: "Tool",
-  },
-  {
-    title: "Agent Scratchpad",
-    status: "Side project",
-    desc: "A minimal harness for running and inspecting agentic loops — visualizes tool calls, memory, and branch decisions so you can actually debug what the agent is doing.",
-    stack: ["TypeScript", "Agents", "Observability"],
-    tag: "Tool",
-  },
+  { id: "quizzibility", title: "Quizzibility", status: "Active", desc: "AI-powered platform for interactive learning and assessment. I design LLM-powered submission analysis, misconception clustering, feature gating, and human-centered interaction improvements.", stack: ["React", "TypeScript", "LLMs", "PostgreSQL"], tag: "Applied AI", detail: { role: "AI systems developer and human-centered AI researcher", challenge: "Instructors need useful insight from student work without turning feedback into an opaque answer machine.", approach: "I work across product requirements, full-stack implementation, LLM workflow design, misconception clustering, feature gating, A/B testing, and usability analysis.", outcome: "The platform supports richer instructor feedback workflows and has improved feedback cycles by 50%+ in the work described in my résumé.", takeaway: "The strongest AI features are the ones that make human judgment more informed, not less necessary." } },
+  { id: "drive-lab", title: "Accessible Autonomous Vehicle Interfaces", status: "Research project", desc: "Designed and evaluated human-machine interfaces and interaction prototypes for autonomous vehicles, with a focus on accessibility, trust, and usability.", stack: ["HCI", "Figma", "Unity", "User research"], tag: "DRIVE Lab", detail: { role: "User experience research assistant", challenge: "Autonomous-vehicle interfaces must communicate system state and support people with different abilities, expectations, and levels of trust.", approach: "I combined interviews, ethnography, surveys, usability testing, storyboards, wireframes, Figma prototypes, Bubble.io, and Unity-based interaction work across multiple research projects.", outcome: "The work contributed to measured improvements in usability, accessibility, and user satisfaction, including a prototype that improved usability by 60%.", takeaway: "Accessible interaction is a systems problem: it depends on the interface, the context, the user, and the behavior of the underlying automation." } },
+  { id: "enterprise-reporting", title: "Enterprise AI Reporting Architecture", status: "Professional work", desc: "Defined a secure architecture for automated project summaries and reporting using Oracle Primavera Unifier, Oracle Integration Cloud, REST APIs, and Microsoft Copilot.", stack: ["Oracle Unifier", "REST APIs", "Microsoft Copilot", "Reporting"], tag: "DC Water", detail: { role: "PMIS analyst and technical program contributor", challenge: "Project leaders needed more reliable visibility across financial, schedule, change-management, and closeout data without adding manual reporting work.", approach: "I mapped data sources and workflows, designed dashboards, identified data-quality gaps, gathered stakeholder requirements, and documented a secure path for AI-assisted reporting.", outcome: "The work reduced reporting effort, improved decision visibility, and made complex PMIS processes easier for new and occasional users.", takeaway: "AI adoption starts with trustworthy data flows, clear ownership, and workflows that people can actually operate." } },
+  { id: "privacy-v2x", title: "Location Privacy in Urban V2X Systems", status: "Research project", desc: "Evaluated how repeated trip observations degrade location privacy in urban vehicle-to-everything systems using entropy-based privacy metrics and a four-week simulation.", stack: ["Python", "V2X", "Simulation", "Privacy metrics"], tag: "Research", detail: { role: "Researcher", challenge: "Connected-vehicle systems improve safety and traffic efficiency, but repeated observations can reveal sensitive travel patterns over time.", approach: "I used an urban simulation environment and entropy-based metrics to evaluate how accumulated trip data changes privacy across repeated journeys.", outcome: "The analysis showed how privacy degradation can emerge from data accumulation even when individual observations appear low risk.", takeaway: "Privacy evaluation needs to account for longitudinal patterns, not only single events." } },
+  { id: "agentic-ops-copilot", title: "Agentic Operations Copilot", status: "Planned build", desc: "A portfolio project for demonstrating agent orchestration, tool use, approval gates, evaluation, and observability in a realistic operations workflow.", stack: ["TypeScript", "LLM APIs", "Agents", "Observability"], tag: "Portfolio build", planned: true, detail: { role: "Planned portfolio project", challenge: "Teams need AI agents that can take useful action while remaining observable, controllable, and accountable.", approach: "Build a small agent that triages requests, retrieves evidence, proposes actions, invokes approved tools, and routes uncertain cases to a human reviewer.", outcome: "Planned deliverables include an evaluation set, trace viewer, tool-permission model, approval workflow, and reliability dashboard.", takeaway: "An agent is a product and an operating model, not just a prompt." } },
+  { id: "llm-evaluation-lab", title: "LLM Evaluation & Trust Calibration Lab", status: "Planned build", desc: "A practical evaluation harness for measuring answer quality, user reliance, failure modes, and calibration across LLM-powered workflows.", stack: ["Python", "LLM APIs", "Evaluation", "Analytics"], tag: "Portfolio build", planned: true, detail: { role: "Planned portfolio project", challenge: "Teams need to know not only whether a model is accurate, but when people trust it too much or too little.", approach: "Create a benchmark dataset, rubric-based evaluation pipeline, failure taxonomy, human-review workflow, and dashboard for quality and reliance metrics.", outcome: "Planned deliverables include reproducible evaluation runs, model comparisons, annotated failure cases, and recommendations for safer product behavior.", takeaway: "Evaluation should connect model behavior to user and business outcomes." } },
+  { id: "data-quality-command-center", title: "AI Data Quality Command Center", status: "Planned build", desc: "A realistic enterprise-data portfolio project that turns pipeline health, missing records, and reporting risk into prioritized, explainable actions.", stack: ["SQL", "Python", "PostgreSQL", "Power BI"], tag: "Portfolio build", planned: true, detail: { role: "Planned portfolio project", challenge: "Reporting teams lose time when data-quality issues are discovered late and nobody can see which issues matter most.", approach: "Build a synthetic project-data environment with validation rules, anomaly detection, lineage notes, issue triage, and executive reporting.", outcome: "Planned deliverables include a data-quality scorecard, issue workflow, impact prioritization model, and decision-ready dashboard.", takeaway: "Technical program management becomes more effective when data health is visible as an operating metric." } },
 ];
 
-const NOTES = [
-  { date: "Apr 2026", title: "On over-reliance: when the scaffold becomes the answer", read: "6 min" },
-  { date: "Mar 2026", title: "Designing feedback that teaches instead of tells", read: "9 min" },
-  { date: "Feb 2026", title: "What I learned shipping LLM features to real users", read: "12 min" },
-  { date: "Jan 2026", title: "What 'agentic' actually means to me this year", read: "5 min" },
-  { date: "Dec 2025", title: "Three failure modes of AI copilots", read: "8 min" },
+const BLOG_POSTS = [
+  { date: "Featured", title: "Shipping LLM features without losing the human in the loop", read: "8 min", projectId: "quizzibility", intro: "What it means to design AI feedback that supports learning, instructor judgment, and measurable product outcomes.", sections: [{ label: "The problem", text: "AI feedback can be fast and fluent while still being unhelpful. The product challenge is to create useful signals without encouraging people to outsource judgment." }, { label: "The work", text: "The case study covers LLM-powered submission analysis, misconception clustering, feature gating, experimentation, and usability analysis in Quizzibility." }, { label: "The lesson", text: "Good AI product work connects model behavior to user behavior, workflow outcomes, and the people responsible for making decisions." }] },
+  { date: "Case study", title: "Designing accessible interfaces for autonomous vehicles", read: "10 min", projectId: "drive-lab", intro: "A detailed look at user research, prototyping, accessibility, and evaluation in DRIVE Lab work.", sections: [{ label: "The problem", text: "Autonomous-vehicle interfaces need to communicate system behavior clearly across varied user needs and contexts." }, { label: "The work", text: "The work combined interviews, ethnography, surveys, usability sessions, storyboards, Figma, Bubble.io, and Unity prototypes." }, { label: "The lesson", text: "Human-centered research is most valuable when it changes product decisions, not when it ends as a research report." }] },
+  { date: "Case study", title: "From enterprise reporting pain to an AI architecture", read: "7 min", projectId: "enterprise-reporting", intro: "How requirements, data mapping, dashboards, and governance shape a useful enterprise AI workflow.", sections: [{ label: "The problem", text: "Project leaders needed timely, trustworthy visibility without creating another manual reporting burden." }, { label: "The work", text: "The approach mapped data sources and workflows, improved dashboard coverage, identified data-quality issues, and defined a secure AI-assisted reporting path." }, { label: "The lesson", text: "Enterprise AI value depends on data quality, integration boundaries, permissions, and adoption—not only on model capability." }] },
+  { date: "Research note", title: "Why location privacy degrades over repeated trips", read: "6 min", projectId: "privacy-v2x", intro: "A research write-up on longitudinal privacy risk in connected-vehicle systems.", sections: [{ label: "The question", text: "What can repeated low-risk observations reveal about a person's travel patterns over time?" }, { label: "The method", text: "A four-week urban simulation and entropy-based privacy metric were used to track the effect of accumulated observations." }, { label: "The lesson", text: "Privacy risk is often a trajectory, not a single event." }] },
+  { date: "Build proposal", title: "A portfolio blueprint for agentic operations", read: "5 min", projectId: "agentic-ops-copilot", intro: "The planned project that will demonstrate agent orchestration, tool use, approval gates, and observability.", sections: [{ label: "Why build it", text: "Agentic AI roles require evidence that you understand reliability, permissions, evaluation, and operational workflows—not just prompting." }, { label: "What it will show", text: "A working agent, trace viewer, tool registry, approval path, benchmark set, and reliability dashboard." }, { label: "Success criteria", text: "The project should make every action explainable, testable, and easy for a human operator to review." }] },
 ];
 
 const EDUCATION = [
-  {
-    school: "Clemson University",
-    location: "Clemson, SC",
-    degree: "Ph.D., Human-Centered Computing",
-    dates: "Aug 2023 — Aug 2027 (in progress)",
-  },
-  {
-    school: "Clemson University",
-    location: "Clemson, SC",
-    degree: "M.S., Computer Science",
-    dates: "Aug 2023 — Aug 2025",
-  },
+  { school: "Clemson University", location: "Clemson, SC", degree: "Ph.D., Human-Centered Computing", dates: "2023 — 2027 (in progress)" },
+  { school: "Clemson University", location: "Clemson, SC", degree: "M.S., Computer Science", dates: "2023 — 2025" },
+  { school: "University of Ilorin", location: "Ilorin, Nigeria", degree: "B.S., Civil Engineering", dates: "2014 — 2019" },
 ];
 
 const EXPERIENCE = [
-  {
-    org: "DRIVE Lab, Clemson University",
-    location: "Clemson, SC",
-    role: "Research Assistant — Autonomous Vehicle HMI Program (NHTSA, ViPR GVSC)",
-    dates: "Aug 2023 — Present",
-    bullets: [
-      "Re-architected backlogs, sprint cadences, and dependency flows across five partner organizations, accelerating multi-institution delivery timelines by ~30%.",
-      "Led stakeholder workshops to define requirements, success metrics, and acceptance criteria, aligning technical constraints with program objectives.",
-      "Built KPI dashboards in Tableau and SQL to track adoption, usability, and delivery risk — improving execution visibility by 40%.",
-      "Translated user research and behavioral data into prioritized backlog items, reducing prototype rework by 65%.",
-      "Standardized delivery documentation and workflows in Jira and Confluence, cutting clarification cycles by 35% and onboarding time by 40%.",
-    ],
-  },
-  {
-    org: "KPMG Nigeria",
-    location: "Lagos, NG",
-    role: "IT Program Manager — Digital Banking Transformation (Zenith Bank Plc)",
-    dates: "Oct 2021 — Jun 2023",
-    bullets: [
-      "Delivered enterprise-scale digital transformation initiatives supporting 8,000+ users, coordinating engineering, operations, vendors, and client leadership.",
-      "Translated business needs into prioritized work items and sprint goals using Agile methodologies — improving business/engineering alignment by 50%.",
-      "Built executive dashboards in Power BI tracking financial, operational, and delivery KPIs, enabling 15% cost savings through early risk identification.",
-      "Supported cloud-enabled platform upgrades and data integrations, improving reporting latency by 60% and strengthening audit readiness.",
-      "Defined delivery roadmaps, governance workflows, and risk escalation paths to protect SLA and compliance outcomes.",
-    ],
-  },
-  {
-    org: "Intelfort Nig Ltd",
-    location: "Lagos, NG",
-    role: "Business Intelligence Analyst — Client: NIBSS",
-    dates: "Mar 2021 — Oct 2021",
-    bullets: [
-      "Designed and operated Azure Data Factory ETL pipelines processing high-volume national payment data for real-time monitoring and capacity planning.",
-      "Built SQL and Python validation workflows that reduced data quality errors by 45% and shortened reporting cycles by 35%.",
-      "Delivered executive-facing dashboards used to guide infrastructure prioritization and operational decisions across national payment systems.",
-      "Synthesized complex datasets into clear recommendations for technical and non-technical stakeholders.",
-    ],
-  },
+  { org: "DRIVE Lab, Clemson University", location: "Clemson, SC", role: "User Experience Research Assistant", dates: "Aug 2023 — Aug 2025", bullets: ["Directed accessible interface development for inclusive technology solutions and managed a team of five researchers building a prototype that improved usability by 60%.", "Led a government-funded military project using Unity to create and test natural user interactions in a virtual-reality environment, while mentoring three junior researchers.", "Collaborated with the National Highway Traffic Safety Administration on autonomous-vehicle research using surveys, ethnography, interviews, Figma, and Bubble.io prototypes.", "Developed in-vehicle human-machine interfaces and coordinated usability testing, contributing to measured improvements in usability, accessibility, and user satisfaction."] },
+  { org: "Clemson University College of Engineering, Computing and Applied Sciences", location: "Clemson, SC", role: "Graduate Research Assistant — AI Systems Developer", dates: "Jan 2026 — Present", bullets: ["Build and enhance Quizzibility, an AI-powered learning platform using React, TypeScript, Next.js, Supabase, PostgreSQL, and LLM APIs.", "Design LLM-powered submission analysis workflows that identify patterns and misconceptions, improving feedback cycles by 50%+.", "Translate user workflows and application dependencies into technical requirements, implementation plans, data flows, and prioritized recommendations.", "Implement feature gating, A/B testing, cohort analysis, and behavioral funnels to support controlled product experiments.", "Apply human-centered AI principles to usability, accessibility, responsible AI, automation bias, and AI over-reliance questions."] },
+  { org: "Clemson University College of Engineering, Computing and Applied Sciences", location: "Clemson, SC", role: "Graduate Teaching Assistant", dates: "Aug 2025 — Present", bullets: ["Support teaching and course delivery in Human-Centered Computing and AI-driven Software Engineering through grading and technical guidance."] },
+  { org: "DC Water", location: "Washington, DC", role: "Project Management Information System Intern", dates: "May 2026 — Aug 2026", bullets: ["Designed Primavera Unifier dashboards and strengthened project-closeout data quality across financial, schedule, and change-management reporting.", "Defined an AI-powered enterprise reporting architecture using Microsoft Copilot, REST APIs, Oracle Integration Cloud, and Oracle Primavera Unifier.", "Mapped reporting data sources, workflows, and integration requirements to support secure movement of project data across enterprise systems.", "Created user-focused documentation and workflow guidance that made complex PMIS processes easier for new and occasional users."] },
+  { org: "KPMG Nigeria", location: "Lagos, Nigeria", role: "IT Program Manager — Digital Banking & Payments Platforms", dates: "Oct 2021 — Jun 2023", bullets: ["Led digital transformation initiatives for enterprise banking and payments platforms serving 8,000+ users across multiple countries.", "Defined program roadmaps and automated reporting frameworks, contributing to a 15% decrease in operational expenses and a 60% reduction in reporting time.", "Coordinated clients, technology teams, vendors, and business stakeholders across complex enterprise technology programs."] },
+  { org: "INTELFORT NIGERIA LTD", location: "Lagos, Nigeria", role: "Business Intelligence Analyst", dates: "Mar 2021 — Oct 2021", bullets: ["Automated SQL data pipelines and created real-time Power BI dashboards to improve data accuracy and reduce manual reporting effort.", "Translated complex analytics into actionable insights for non-technical executives and organizational decision-makers."] },
 ];
 
 const SKILLS = [
-  { group: "Consulting & Delivery", items: ["Requirements gathering", "Stakeholder workshops", "Agile", "Jira", "Confluence", "Roadmap development"] },
-  { group: "Data & Analytics", items: ["SQL", "Python", "Power BI", "Tableau", "KPI design", "Analytics storytelling"] },
-  { group: "Cloud & Platforms", items: ["Azure Data Factory", "Cloud architectures", "Data pipelines", "Hybrid cloud"] },
-  { group: "AI & Systems", items: ["LLM APIs", "AI-assisted workflows", "Metrics-driven experimentation", "Human-centered system design"] },
-  { group: "Communication", items: ["Executive presentations", "Technical documentation", "Cross-functional collaboration"] },
+  { group: "Program & Product Delivery", items: ["Technical program management", "Requirements gathering", "Stakeholder workshops", "Agile delivery", "Roadmaps", "Jira"] },
+  { group: "AI & Systems", items: ["Agentic AI", "LLM APIs", "Microsoft Copilot", "AI automation", "Human-centered AI", "LLM evaluation"] },
+  { group: "Data & Analytics", items: ["SQL", "Python", "Power BI", "Tableau", "PostgreSQL", "Data visualization"] },
+  { group: "Enterprise Platforms", items: ["REST APIs", "Oracle Primavera Unifier", "Oracle Integration Cloud", "Enterprise reporting", "Data pipelines"] },
+  { group: "Development", items: ["React", "TypeScript", "Next.js", "Supabase", "JavaScript", "Technical documentation"] },
 ];
 
-Object.assign(window, { PROFILE, LINKS, TOPICS, PUBLICATIONS, PROJECTS, NOTES, EDUCATION, EXPERIENCE, SKILLS });
+Object.assign(window, { PROFILE, LINKS, TOPICS, PUBLICATIONS, PROJECTS, BLOG_POSTS, EDUCATION, EXPERIENCE, SKILLS });
