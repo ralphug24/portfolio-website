@@ -13,15 +13,15 @@ function Home({ navigate }) {
               <span>Agentic AI · AI Technical Program Management · Clemson</span>
             </div>
             <h1 className="hero-title reveal" data-delay="1">
-              Building <span className="serif">agentic AI</span><br/>
-              systems that help<br/>
-              teams execute <span className="serif">better.</span>
+              Agentic AI programs<br />
+              built for trust and<br />
+              execution <span className="serif">at scale.</span>
             </h1>
             <p className="hero-lede reveal" data-delay="2">
               I&rsquo;m <strong>Ralph</strong> — an AI technical program manager and
-              human-centered AI researcher who turns ambiguous problems into usable
-              systems, clear roadmaps, and measurable outcomes. I work across agentic
-              AI, LLM evaluation, enterprise data, and product execution.
+              human-centered AI researcher who turns ambiguous opportunities into
+              usable systems, clear roadmaps, and measurable outcomes. I work across
+              agentic AI, LLM evaluation, enterprise data, and product execution.
             </p>
             <div className="hero-actions reveal" data-delay="3">
               <a href="#projects" className="btn btn-primary" onClick={(e) => go(e, "projects")}>
@@ -30,8 +30,18 @@ function Home({ navigate }) {
               <a href={LINKS.cv} target="_self" rel="noreferrer" className="btn">
                 <Icon name="download" /> Download CV
               </a>
+              <a href={LINKS.email} className="btn btn-secondary">
+                Let&rsquo;s connect <Icon name="mail" width="14" height="14" />
+              </a>
               <SocialIcons />
             </div>
+          </div>
+        </div>
+
+        <div className="hero-proof reveal" data-delay="3">
+          <div className="hero-proof-label">What I bring to an AI team</div>
+          <div className="hero-proof-grid">
+            {VALUE_PROPS.map((v) => <div className="proof-card" key={v.label}><strong>{v.label}</strong><span>{v.text}</span></div>)}
           </div>
         </div>
 
@@ -92,7 +102,7 @@ function About() {
             </p>
             <p>
               My work sits at the intersection of <strong>AI systems, product execution,
-              enterprise technology, and human-computer interaction</strong>. I translate
+                enterprise technology, and human-computer interaction</strong>. I translate
               ambiguous stakeholder needs into requirements, workflows, dashboards,
               architecture recommendations, and execution-ready solutions.
             </p>
@@ -163,17 +173,27 @@ function ProjectDetail({ p, onBack }) {
   );
 }
 
+function ProjectGroup({ title, sub, projects, onOpen }) {
+  return (
+    <div className="project-group">
+      <div className="project-group-head"><h3>{title}</h3><span>{sub}</span></div>
+      <div className="projects-grid">{projects.map((p, i) => <ProjectCard key={p.id} p={p} idx={i} onOpen={onOpen} />)}</div>
+    </div>
+  );
+}
+
 function Projects() {
   const [selected, setSelected] = useS(null);
+  const professional = PROJECTS.filter(p => !p.planned);
+  const portfolio = PROJECTS.filter(p => p.planned);
   return (
     <section className="section" id="projects">
       <div className="container">
         <SectionHead num="02" title="Projects" sub="/ things I'm building" />
         {selected ? <ProjectDetail p={selected} onBack={() => setSelected(null)} /> : <>
           <p className="section-intro">Selected work and portfolio builds for Agentic AI, technical program management, human-centered AI, and enterprise data roles. Open a card to read the case study.</p>
-          <div className="projects-grid">
-            {PROJECTS.map((p, i) => <ProjectCard key={p.id} p={p} idx={i} onOpen={setSelected} />)}
-          </div>
+          <ProjectGroup title="Professional case studies" sub="Selected work" projects={professional} onOpen={setSelected} />
+          <ProjectGroup title="Portfolio builds" sub="Planned / in development" projects={portfolio} onOpen={setSelected} />
         </>}
       </div>
     </section>
@@ -317,11 +337,11 @@ function Resume() {
         <SectionHead num="05" title="Resume" sub="/ cv · snapshot" />
         <div className="resume-top reveal">
           <p className="resume-intro">
-              Agentic AI and human-centered computing researcher with experience leading
-              technical programs, AI-enabled product work, enterprise data initiatives,
-              and applied research. I translate ambiguous needs into structured
-              requirements, architecture recommendations, dashboards, and execution-ready
-              roadmaps.
+            Agentic AI and human-centered computing researcher with experience leading
+            technical programs, AI-enabled product work, enterprise data initiatives,
+            and applied research. I translate ambiguous needs into structured
+            requirements, architecture recommendations, dashboards, and execution-ready
+            roadmaps.
           </p>
           <a href={LINKS.cv} target="_self" rel="noreferrer" className="btn btn-primary">
             <Icon name="download" /> Download full CV

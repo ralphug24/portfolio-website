@@ -10,15 +10,21 @@ const PROFILE = {
 
 const LINKS = {
   github: "https://github.com/ralphug24",
-  linkedin: "https://www.linkedin.com/in/raphael-maris-ugboko/",
+  linkedin: "https://www.linkedin.com/in/ralphugboko/",
   email: "mailto:ralphugboko@gmail.com",
-  cv: "assets/RESUME_UGBOKO-IBM_Enterprise.pdf",
+  cv: "assets/RESUME_UGBOKO.pdf",
   photo: "assets/ralph_portrait.jpg",
 };
 
 const TOPICS = [
   "Agentic AI", "Human-Centered AI", "Technical Program Manager",
   "Enterprise Data", "LLM Evaluation", "AI Systems", "Product Execution",
+];
+
+const VALUE_PROPS = [
+  { label: "AI product delivery", text: "Translate ambiguous AI opportunities into requirements, experiments, and execution plans." },
+  { label: "Human-centered systems", text: "Design workflows that improve judgment, accessibility, trust, and adoption." },
+  { label: "Technical program leadership", text: "Align stakeholders, dependencies, data flows, and measurable outcomes across teams." },
 ];
 
 const PUBLICATIONS = [
@@ -69,4 +75,4 @@ const SKILLS = [
   { group: "Development", items: ["React", "TypeScript", "Next.js", "Supabase", "JavaScript", "Technical documentation"] },
 ];
 
-Object.assign(window, { PROFILE, LINKS, TOPICS, PUBLICATIONS, PROJECTS, BLOG_POSTS, EDUCATION, EXPERIENCE, SKILLS });
+Object.assign(window, { PROFILE, LINKS, TOPICS, VALUE_PROPS, PUBLICATIONS, PROJECTS, BLOG_POSTS, EDUCATION, EXPERIENCE, SKILLS });
