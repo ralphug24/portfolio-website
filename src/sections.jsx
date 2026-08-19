@@ -143,8 +143,12 @@ function ProjectCard({ p, idx, onOpen }) {
         <span>{p.tag}</span>
         <span className="project-status"><span className="now-ping" />{p.status}</span>
       </div>
+      <div className="project-org">{p.org}</div>
       <h3 className="project-title">{p.title}</h3>
+      <div className="project-role">{p.role}</div>
       <p className="project-desc">{p.desc}</p>
+      {p.detail.impacts && <div className="project-proof-strip">{p.detail.impacts.map(i => <span key={i}>{i}</span>)}</div>}
+      {p.capabilities && <div className="project-capabilities">{p.capabilities.map(c => <span key={c}>{c}</span>)}</div>}
       <div className="project-stack">
         {p.stack.map(s => <span key={s} className="stack-tag">{s}</span>)}
       </div>
@@ -159,23 +163,39 @@ function ProjectDetail({ p, onBack }) {
       <button className="case-back" onClick={onBack}><Icon name="arrow" width="13" height="13" /> Back to projects</button>
       <div className="case-kicker">{p.tag} · {p.status}</div>
       <h3 className="case-title">{p.title}</h3>
-      <p className="case-role">Role: {p.detail.role}</p>
+      <p className="case-lede">{p.desc}</p>
+      <div className="case-meta-grid">
+        <div><span>Organization</span><strong>{p.detail.organization}</strong></div>
+        <div><span>Role</span><strong>{p.detail.role}</strong></div>
+        <div><span>Duration</span><strong>{p.detail.duration}</strong></div>
+        <div><span>Scope</span><strong>{p.scope}</strong></div>
+      </div>
+      {p.detail.impacts && <div className="case-impact-strip">{p.detail.impacts.map(i => <strong key={i}>{i}</strong>)}</div>}
+      <div className="case-section case-wide"><span className="case-label">Executive summary</span><p>{p.detail.contribution}</p></div>
       <div className="case-grid">
-        {["challenge", "approach", "outcome", "takeaway"].map((key) => (
+        {[['problem','challenge'], ['what I owned','contribution'], ['approach','approach'], ['outcome','outcome'], ['takeaway','takeaway']].map(([label, key]) => (
           <div className="case-section" key={key}>
-            <span className="case-label">{key}</span>
+            <span className="case-label">{label}</span>
             <p>{p.detail[key]}</p>
           </div>
         ))}
       </div>
+      {p.detail.workflow && <CaseFlow title="Workflow" items={p.detail.workflow} />}
+      {p.detail.architecture && <CaseFlow title="Public-safe architecture" items={p.detail.architecture} />}
+      {p.detail.decisions && <div className="case-section case-wide"><span className="case-label">Key technical decisions</span><ul className="case-list">{p.detail.decisions.map(d => <li key={d}>{d}</li>)}</ul></div>}
+      {p.detail.demonstrates && <div className="case-section case-wide"><span className="case-label">What this demonstrates</span><div className="case-capabilities">{p.detail.demonstrates.map(d => <span key={d}>{d}</span>)}</div></div>}
       <div className="project-stack">{p.stack.map(s => <span key={s} className="stack-tag">{s}</span>)}</div>
     </article>
   );
 }
 
-function ProjectGroup({ title, sub, projects, onOpen }) {
+function CaseFlow({ title, items }) {
+  return <div className="case-flow"><span className="case-label">{title}</span><div className="flow-track">{items.map((item, i) => <React.Fragment key={item}><div className="flow-node">{item}</div>{i < items.length - 1 && <span className="flow-arrow">↓</span>}</React.Fragment>)}</div></div>;
+}
+
+function ProjectGroup({ title, sub, projects, onOpen, featured, compact }) {
   return (
-    <div className="project-group">
+    <div className={`project-group ${featured ? "project-group-featured" : ""} ${compact ? "project-group-compact" : ""}`}>
       <div className="project-group-head"><h3>{title}</h3><span>{sub}</span></div>
       <div className="projects-grid">{projects.map((p, i) => <ProjectCard key={p.id} p={p} idx={i} onOpen={onOpen} />)}</div>
     </div>
@@ -184,7 +204,8 @@ function ProjectGroup({ title, sub, projects, onOpen }) {
 
 function Projects() {
   const [selected, setSelected] = useS(null);
-  const professional = PROJECTS.filter(p => !p.planned);
+  const featured = PROJECTS.filter(p => p.featured);
+  const research = PROJECTS.filter(p => !p.planned && !p.featured);
   const portfolio = PROJECTS.filter(p => p.planned);
   return (
     <section className="section" id="projects">
@@ -192,7 +213,8 @@ function Projects() {
         <SectionHead num="02" title="Projects" sub="/ things I'm building" />
         {selected ? <ProjectDetail p={selected} onBack={() => setSelected(null)} /> : <>
           <p className="section-intro">Selected work and portfolio builds for Agentic AI, technical program management, human-centered AI, and enterprise data roles. Open a card to read the case study.</p>
-          <ProjectGroup title="Professional case studies" sub="Selected work" projects={professional} onOpen={setSelected} />
+          <ProjectGroup title="Featured professional work" sub="Evidence from the field" projects={featured} onOpen={setSelected} featured />
+          <ProjectGroup title="Research & human-centered systems" sub="Selected systems work" projects={research} onOpen={setSelected} compact />
           <ProjectGroup title="Portfolio builds" sub="Planned / in development" projects={portfolio} onOpen={setSelected} />
         </>}
       </div>
