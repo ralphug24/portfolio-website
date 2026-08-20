@@ -45,7 +45,7 @@ function App() {
       <Nav theme={theme} setTheme={setTheme} active={page} navigate={navigate} />
       <main key={page} className="page-fade">
         {page === "home" && <Home navigate={navigate} />}
-        {page === "about" && <About />}
+        {page === "about" && <About navigate={navigate} />}
         {page === "projects" && <Projects />}
         {page === "publications" && <Publications />}
         {page === "blog" && <Blog />}

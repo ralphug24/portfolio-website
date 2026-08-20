@@ -82,12 +82,12 @@ function SocialIcons() {
   );
 }
 
-function About() {
+function About({ navigate }) {
   return (
     <section className="section" id="about">
       <div className="container">
-        <SectionHead num="01" title="About" sub="/ whoami" />
-        <div className="about">
+        <SectionHead num="01" title="About" sub="/ the throughline" />
+        <div className="about about-opening">
           <div className="about-photo reveal">
             <img src={LINKS.photo} alt="Ralph Ugboko" loading="lazy" />
             <div className="about-photo-meta">
@@ -96,34 +96,67 @@ function About() {
           </div>
           <div className="prose reveal" data-delay="1">
             <p>
-              I&rsquo;m an <strong>Agentic AI and Human-Centered Computing researcher</strong> at
-              Clemson University focused on building and operationalizing AI-enabled
-              systems, enterprise applications, and data/reporting platforms.
+              I&rsquo;m an <strong>Agentic AI and Human-Centered Computing researcher</strong>
+              focused on leading and building AI-enabled programs at the intersection of
+              technical systems, cross-functional execution, data, and human-centered design.
             </p>
             <p>
-              My work sits at the intersection of <strong>AI systems, product execution,
-                enterprise technology, and human-computer interaction</strong>. I translate
-              ambiguous stakeholder needs into requirements, workflows, dashboards,
-              architecture recommendations, and execution-ready solutions.
+              My background spans project delivery, banking and business intelligence,
+              enterprise technical program leadership, HCI research, AI product development,
+              and enterprise reporting. Across those settings, I translate ambiguous
+              stakeholder needs into requirements, workflows, architecture recommendations,
+              and execution-ready solutions.
             </p>
             <p>
-              Currently, I work on <strong>Quizzibility</strong>, an AI-powered platform
-              for interactive learning and assessment. I design LLM-powered submission
-              analysis, misconception clustering, condition-based feature gating, and
-              human-centered interaction improvements while studying how these systems
-              influence user behavior.
+              Today, I work on <strong>Quizzibility</strong>, an AI-powered platform for
+              interactive learning and assessment, and draw on enterprise reporting and
+              architecture work from <strong>DC Water</strong>. These experiences bring
+              together hands-on implementation, LLM workflows, experimentation, data quality,
+              and technical program execution.
             </p>
             <blockquote>
               The value of AI is not just in what it can do, but in how it changes
               what people do.
             </blockquote>
             <p>
-              I&rsquo;m interested in AI/ML technical program management, AI product
-              operations, LLM evaluation, AI systems, and enterprise AI automation —
-              especially where technical depth, human-centered thinking, and disciplined
-              execution matter.
+              I&rsquo;m focused on technical program and AI product roles where I can lead
+              complex AI, data, and enterprise-system initiatives from ambiguous requirements
+              through implementation, evaluation, and adoption.
             </p>
           </div>
+        </div>
+
+        <div className="career-story reveal">
+          <div className="story-kicker">How the pieces connect</div>
+          <h3 className="story-title">A progression toward technical program leadership in AI</h3>
+          <p className="story-intro">Each chapter added a capability I now use to move complex technical work forward.</p>
+          <div className="career-timeline">
+            {CAREER_PATH.map((item, i) => (
+              <article className="career-step" key={item.period}>
+                <div className="career-marker"><span>0{i + 1}</span></div>
+                <div className="career-step-body">
+                  <div className="career-period">{item.period}</div>
+                  <h4>{item.title}</h4>
+                  <div className="career-org">{item.org}</div>
+                  <p>{item.text}</p>
+                  <button className="text-link" onClick={() => navigate(item.link)}>{item.cta} <Icon name="arrow" width="13" height="13" /></button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="how-i-work reveal">
+          <div className="story-kicker">How I work</div>
+          <div className="work-grid">
+            {TPM_STRENGTHS.map((strength, i) => <div className="work-principle" key={strength}><span>0{i + 1}</span><p>{strength}</p></div>)}
+          </div>
+        </div>
+
+        <div className="about-close reveal">
+          <div className="story-kicker">What I&rsquo;m building toward</div>
+          <p>I&rsquo;m focused on technical program and AI product roles where technical depth, human-centered thinking, and disciplined execution come together to make complex AI systems useful, trustworthy, and adoptable.</p>
+          <div className="about-close-actions"><button className="btn btn-primary" onClick={() => navigate("projects")}>Explore my work <Icon name="arrow" /></button><button className="btn" onClick={() => navigate("resume")}>View résumé <Icon name="arrow" /></button></div>
         </div>
       </div>
     </section>
@@ -143,6 +176,7 @@ function ProjectCard({ p, idx, onOpen }) {
         <span>{p.tag}</span>
         <span className="project-status"><span className="now-ping" />{p.status}</span>
       </div>
+      {p.visuals?.[0] && <div className="project-art"><img src={p.visuals[0].src} alt={p.visuals[0].alt} loading="lazy" /></div>}
       <div className="project-org">{p.org}</div>
       <h3 className="project-title">{p.title}</h3>
       <div className="project-role">{p.role}</div>
@@ -158,6 +192,18 @@ function ProjectCard({ p, idx, onOpen }) {
 }
 
 function ProjectDetail({ p, onBack }) {
+  const [lightbox, setLightbox] = React.useState(null);
+  const labels = {
+    quizzibility: { problem: "The product gap", owned: "My contribution", approach: "How I approached it", outcome: "What shipped", takeaway: "Product lesson" },
+    "enterprise-reporting": { problem: "The reporting problem", owned: "My responsibility", approach: "Architecture and delivery", outcome: "Operational outcome", takeaway: "Enterprise AI lesson" },
+    "kpmg-transformation": { problem: "Program complexity", owned: "My ownership", approach: "Operating model", outcome: "Business impact", takeaway: "Leadership lesson" },
+  }[p.id] || { problem: "The problem", owned: "What I owned", approach: "Approach", outcome: "Outcome", takeaway: "Takeaway" };
+  React.useEffect(() => {
+    if (!lightbox) return undefined;
+    const onKeyDown = (event) => { if (event.key === "Escape") setLightbox(null); };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [lightbox]);
   return (
     <article className="case-study reveal">
       <button className="case-back" onClick={onBack}><Icon name="arrow" width="13" height="13" /> Back to projects</button>
@@ -171,9 +217,9 @@ function ProjectDetail({ p, onBack }) {
         <div><span>Scope</span><strong>{p.scope}</strong></div>
       </div>
       {p.detail.impacts && <div className="case-impact-strip">{p.detail.impacts.map(i => <strong key={i}>{i}</strong>)}</div>}
-      <div className="case-section case-wide"><span className="case-label">Executive summary</span><p>{p.detail.contribution}</p></div>
+      <div className="case-section case-wide"><span className="case-label">Executive summary</span><p>{p.detail.why ? `${p.detail.why} ${p.detail.contribution}` : p.detail.contribution}</p></div>
       <div className="case-grid">
-        {[['problem','challenge'], ['what I owned','contribution'], ['approach','approach'], ['outcome','outcome'], ['takeaway','takeaway']].map(([label, key]) => (
+        {[[labels.problem,'challenge'], [labels.owned,'contribution'], [labels.approach,'approach'], [labels.outcome,'outcome'], [labels.takeaway,'takeaway']].map(([label, key]) => (
           <div className="case-section" key={key}>
             <span className="case-label">{label}</span>
             <p>{p.detail[key]}</p>
@@ -181,16 +227,21 @@ function ProjectDetail({ p, onBack }) {
         ))}
       </div>
       {p.detail.workflow && <CaseFlow title="Workflow" items={p.detail.workflow} />}
-      {p.detail.architecture && <CaseFlow title="Public-safe architecture" items={p.detail.architecture} />}
+      {p.detail.architecture && <CaseFlow title="Architecture" items={p.detail.architecture} />}
       {p.detail.decisions && <div className="case-section case-wide"><span className="case-label">Key technical decisions</span><ul className="case-list">{p.detail.decisions.map(d => <li key={d}>{d}</li>)}</ul></div>}
+      {p.detail.engineeringEvidence && <div className="case-section case-wide"><span className="case-label">Engineering evidence</span><ul className="case-list">{p.detail.engineeringEvidence.map(d => <li key={d}>{d}</li>)}</ul></div>}
       {p.detail.demonstrates && <div className="case-section case-wide"><span className="case-label">What this demonstrates</span><div className="case-capabilities">{p.detail.demonstrates.map(d => <span key={d}>{d}</span>)}</div></div>}
+      {p.visuals && <div className="case-artifacts"><span className="case-label">Selected project visuals</span><p className="case-note case-confidential-note"><strong>Confidentiality note:</strong> These images were generated, reconstructed, or sanitized to protect confidential information. They are public-safe representations of the work, not raw internal screenshots.</p><div className="case-gallery">{p.visuals.map(v => <figure key={v.src}><button className="case-image-button" onClick={() => setLightbox({ ...v, zoom: 1 })} aria-label={`Zoom image: ${v.alt}`}><img src={v.src} alt={v.alt} loading="lazy" /></button><figcaption>{v.caption}</figcaption></figure>)}</div></div>}
       <div className="project-stack">{p.stack.map(s => <span key={s} className="stack-tag">{s}</span>)}</div>
+      {lightbox && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Expanded project visual" onClick={() => setLightbox(null)}><div className="lightbox-panel" onClick={(event) => event.stopPropagation()}><div className="lightbox-toolbar"><span>Project visual</span><div><button onClick={() => setLightbox(v => ({ ...v, zoom: Math.max(.5, v.zoom - .25) }))} aria-label="Zoom out">−</button><button onClick={() => setLightbox(v => ({ ...v, zoom: 1 }))} aria-label="Reset zoom">Reset</button><button onClick={() => setLightbox(v => ({ ...v, zoom: Math.min(3, v.zoom + .25) }))} aria-label="Zoom in">+</button><button onClick={() => setLightbox(null)} aria-label="Close expanded image">×</button></div></div><div className="lightbox-stage"><img src={lightbox.src} alt={lightbox.alt} style={{ transform: `scale(${lightbox.zoom})` }} /></div><p>{lightbox.caption}</p></div></div>}
     </article>
   );
 }
 
 function CaseFlow({ title, items }) {
-  return <div className="case-flow"><span className="case-label">{title}</span><div className="flow-track">{items.map((item, i) => <React.Fragment key={item}><div className="flow-node">{item}</div>{i < items.length - 1 && <span className="flow-arrow">↓</span>}</React.Fragment>)}</div></div>;
+  const mainItems = items.slice(0, -1);
+  const finalItem = items[items.length - 1];
+  return <div className="case-flow"><span className="case-label">{title}</span><div className="flow-track"><div className="flow-main">{mainItems.map((item, i) => <React.Fragment key={item}><div className="flow-node">{item}</div>{i < mainItems.length - 1 && <span className="flow-arrow">→</span>}</React.Fragment>)}</div><div className="flow-final"><span className="flow-arrow flow-drop">↓</span><div className="flow-node">{finalItem}</div></div></div></div>;
 }
 
 function ProjectGroup({ title, sub, projects, onOpen, featured, compact }) {
