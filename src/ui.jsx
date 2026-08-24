@@ -76,7 +76,7 @@ function Nav({ theme, setTheme, active, navigate }) {
         </a>
         <div className="nav-links">
           {links.map(l => (
-            <a key={l.id} href={`#${l.id}`} className="nav-link" data-active={active === l.id} onClick={(e) => go(e, l.id)}>
+            <a key={l.id} href={l.id === "about" ? "/about" : `#${l.id}`} className="nav-link" data-active={active === l.id} onClick={(e) => go(e, l.id)}>
               <span className="n">{l.n}</span>{l.label}
             </a>
           ))}
@@ -97,7 +97,7 @@ function Nav({ theme, setTheme, active, navigate }) {
         {links.map(l => (
           <a
             key={l.id}
-            href={`#${l.id}`}
+            href={l.id === "about" ? "/about" : `#${l.id}`}
             className="nav-drawer-link"
             data-active={active === l.id}
             onClick={(e) => go(e, l.id)}

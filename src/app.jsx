@@ -1,14 +1,17 @@
 // ============ App root ============
 const PAGES = ["home", "about", "projects", "publications", "blog", "resume"];
+const pageFromLocation = () => {
+  const hash = (location.hash || "").replace("#", "");
+  if (PAGES.includes(hash)) return hash;
+  const path = location.pathname.replace(/^\/+|\/+$/g, "");
+  return PAGES.includes(path) ? path : "home";
+};
 
 function App() {
   const [theme, setTheme] = React.useState(() => {
     return localStorage.getItem("theme") || window.TWEAKS.defaultTheme || "dark";
   });
-  const [page, setPage] = React.useState(() => {
-    const h = (location.hash || "").replace("#", "");
-    return PAGES.includes(h) ? h : "home";
-  });
+  const [page, setPage] = React.useState(pageFromLocation);
   const [tweaks, setTweaks] = React.useState(window.TWEAKS);
 
   React.useEffect(() => {
@@ -25,17 +28,21 @@ function App() {
 
   const navigate = React.useCallback((p) => {
     setPage(p);
-    history.replaceState(null, "", "#" + p);
+    history.replaceState(null, "", p === "about" ? "/about" : "#" + p);
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
   React.useEffect(() => {
-    const onHash = () => {
-      const h = (location.hash || "").replace("#", "");
-      if (PAGES.includes(h) && h !== page) setPage(h);
+    const onLocationChange = () => {
+      const nextPage = pageFromLocation();
+      if (nextPage !== page) setPage(nextPage);
     };
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
+    window.addEventListener("hashchange", onLocationChange);
+    window.addEventListener("popstate", onLocationChange);
+    return () => {
+      window.removeEventListener("hashchange", onLocationChange);
+      window.removeEventListener("popstate", onLocationChange);
+    };
   }, [page]);
 
   useReveal();
