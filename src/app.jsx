@@ -1,5 +1,5 @@
 // ============ App root ============
-const PAGES = ["home", "about", "projects", "publications", "blog", "resume"];
+const PAGES = ["home", "about", "projects", "resume", "publications", "blog"];
 const pageFromLocation = () => {
   const hash = (location.hash || "").replace("#", "");
   if (PAGES.includes(hash)) return hash;

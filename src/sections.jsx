@@ -290,7 +290,7 @@ function Publications() {
   return (
     <section className="section" id="publications">
       <div className="container">
-        <SectionHead num="03" title="Publications" sub={`${PUBLICATIONS.length} selected`} />
+        <SectionHead num="04" title="Publications" sub={`${PUBLICATIONS.length} selected`} />
         <div className="research-list">
           {PUBLICATIONS.map((p, i) => (
             <article key={i} className="pub reveal" data-delay={Math.min(i, 3)}>
@@ -394,7 +394,7 @@ function Blog() {
   return (
     <section className="section" id="blog">
       <div className="container">
-        <SectionHead num="04" title="Blog" sub="Notes from the work" />
+        <SectionHead num="05" title="Blog" sub="Notes from the work" />
         {!selected ? <div className="writing-list">
           {BLOG_POSTS.map((n, i) => (
             <article key={n.title} className="note note-clickable reveal" data-delay={Math.min(i, 3)} onClick={() => setSelected(n)} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSelected(n); } }} tabIndex="0" role="button">
@@ -420,7 +420,7 @@ function Resume() {
   return (
     <section className="section" id="resume">
       <div className="container">
-        <SectionHead num="05" title="Resume" sub="/ cv · snapshot" />
+        <SectionHead num="03" title="Resume" sub="/ cv · snapshot" />
         <div className="resume-top reveal">
           <p className="resume-intro">
             Agentic AI and human-centered computing researcher with experience leading
