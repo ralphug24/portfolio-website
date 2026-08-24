@@ -566,6 +566,8 @@ body[data-grain="true"]::before {
 .beyond-image-button { display: block; width: 100%; padding: 0; cursor: zoom-in; background: var(--bg-elev); }
 .beyond-work-grid img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; filter: saturate(.86); }
 .beyond-image-button:hover img { opacity: .82; }
+.image-viewer { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px; background: rgba(5, 7, 9, .86); cursor: zoom-out; }
+.image-viewer img { display: block; max-width: 96vw; max-height: 92vh; object-fit: contain; cursor: default; }
 .beyond-work-grid figcaption { padding: 11px 12px 13px; color: var(--fg-mute); font-size: 11px; line-height: 1.4; }
 
 /* ============ research ============ */
