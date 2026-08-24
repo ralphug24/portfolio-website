@@ -70,13 +70,13 @@ function Nav({ theme, setTheme, active, navigate }) {
   return (
     <nav className="nav" data-scrolled={scrolled} data-open={menuOpen}>
       <div className="nav-inner">
-        <a href="#home" className="nav-brand" onClick={(e) => go(e, "home")}>
+        <a href="/" className="nav-brand" onClick={(e) => go(e, "home")}>
           <span className="nav-dot" />
           <span>Ralph Ugboko</span>
         </a>
         <div className="nav-links">
           {links.map(l => (
-            <a key={l.id} href={l.id === "about" ? "/about" : `#${l.id}`} className="nav-link" data-active={active === l.id} onClick={(e) => go(e, l.id)}>
+            <a key={l.id} href={l.id === "home" ? "/" : `/${l.id}`} className="nav-link" data-active={active === l.id} onClick={(e) => go(e, l.id)}>
               <span className="n">{l.n}</span>{l.label}
             </a>
           ))}
@@ -97,7 +97,7 @@ function Nav({ theme, setTheme, active, navigate }) {
         {links.map(l => (
           <a
             key={l.id}
-            href={l.id === "about" ? "/about" : `#${l.id}`}
+            href={l.id === "home" ? "/" : `/${l.id}`}
             className="nav-drawer-link"
             data-active={active === l.id}
             onClick={(e) => go(e, l.id)}

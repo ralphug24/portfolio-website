@@ -559,6 +559,12 @@ body[data-grain="true"]::before {
 .about-close { border-top: 1px solid var(--line-soft); padding-top: 34px; max-width: 840px; }
 .about-close > p { color: var(--fg-dim); font-size: clamp(20px, 3vw, 30px); line-height: 1.35; letter-spacing: -.02em; margin: 0 0 26px; }
 .about-close-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.beyond-work { margin-top: 112px; padding-top: 34px; border-top: 1px solid var(--line-soft); }
+.beyond-work-intro { max-width: 700px; color: var(--fg-dim); font-size: 16px; line-height: 1.55; margin: 0 0 24px; }
+.beyond-work-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.beyond-work-grid figure { margin: 0; border: 1px solid var(--line-soft); border-radius: 10px; overflow: hidden; background: var(--bg-elev); }
+.beyond-work-grid img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; filter: saturate(.86); }
+.beyond-work-grid figcaption { padding: 11px 12px 13px; color: var(--fg-mute); font-size: 11px; line-height: 1.4; }
 
 /* ============ research ============ */
 .research-list {
@@ -1275,11 +1281,13 @@ body[data-grain="true"]::before {
   .about-photo { position: static; max-width: 280px; }
 
   .career-story, .how-i-work, .about-close { margin-top: 72px; }
+  .beyond-work { margin-top: 72px; }
   .career-timeline { margin-left: 10px; padding-left: 26px; }
   .career-step { grid-template-columns: 1fr; gap: 4px; }
   .career-step-body { grid-column: 1; }
   .career-marker { left: -43px; }
   .work-grid { grid-template-columns: 1fr; }
+  .beyond-work-grid { grid-template-columns: repeat(2, 1fr); }
   .about-close > p { font-size: 22px; }
 
   .prose { font-size: 15.5px; }

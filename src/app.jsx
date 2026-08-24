@@ -28,7 +28,7 @@ function App() {
 
   const navigate = React.useCallback((p) => {
     setPage(p);
-    history.replaceState(null, "", p === "about" ? "/about" : "#" + p);
+    history.replaceState(null, "", p === "home" ? "/" : "/" + p);
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 

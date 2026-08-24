@@ -46,6 +46,15 @@ const TPM_STRENGTHS = [
   "Drive initiatives from requirements through implementation and adoption",
 ];
 
+const BEYOND_WORK = [
+  { src: "assets/beyond-work/aquarium.png", alt: "Exploring an aquarium", caption: "Exploring aquariums and finding new things to learn." },
+  { src: "assets/beyond-work/tennis.png", alt: "Playing tennis", caption: "Tennis, movement, and time away from the screen." },
+  { src: "assets/beyond-work/bench-press.png", alt: "Strength training in the gym", caption: "Strength training as part of a regular routine." },
+  { src: "assets/beyond-work/deadlifts.png", alt: "Doing deadlifts at the gym", caption: "Building strength through consistent training." },
+  { src: "assets/beyond-work/rope-climbing.jpg", alt: "Rope climbing at the gym", caption: "Trying something challenging and staying active." },
+  { src: "assets/beyond-work/zercher-squats.jpg", alt: "Doing Zercher squats", caption: "Strength work, consistency, and learning new movements." },
+];
+
 const PUBLICATIONS = [
   { year: "2024", title: "Accessible Autonomous Vehicles as Symbiotic Autonomous Systems for Users with Disabilities: Preliminary Design Guidelines", venue: "2024 IEEE 4th International Conference on Human-Machine Systems", tags: ["AV", "Accessibility", "HCI"], url: "https://ieeexplore.ieee.org/abstract/document/10555877/" },
   { year: "2025", title: "Optimizing Data Pipelines for Real-Time Healthcare Analytics in Distributed Systems: Architectural Strategies, Performance Trade-offs, and Emerging Paradigms", venue: "International Journal of Scientific and Management Research", tags: ["Data Systems", "Healthcare"], url: "https://www.researchgate.net/profile/Oluwafemi-Oloruntoba/publication/393870412_Optimizing_Data_Pipelines_for_Real-Time_Healthcare_Analytics_in_Distributed_Systems_Architectural_Strategies_Performance_Trade-offs_and_Emerging_Paradigms/links/687e5323f312d71d78c89bf2/Optimizing-Data-Pipelines-for-Real-Time-Healthcare-Analytics-in-Distributed-Systems-Architectural-Strategies-Performance-Trade-offs-and-Emerging-Paradigms.pdf" },
@@ -94,4 +103,4 @@ const SKILLS = [
   { group: "Development", items: ["React", "TypeScript", "Next.js", "Supabase", "JavaScript", "Technical documentation"] },
 ];
 
-Object.assign(window, { PROFILE, LINKS, TOPICS, VALUE_PROPS, CAREER_PATH, TPM_STRENGTHS, PUBLICATIONS, PROJECTS, BLOG_POSTS, EDUCATION, EXPERIENCE, SKILLS });
+Object.assign(window, { PROFILE, LINKS, TOPICS, VALUE_PROPS, CAREER_PATH, TPM_STRENGTHS, BEYOND_WORK, PUBLICATIONS, PROJECTS, BLOG_POSTS, EDUCATION, EXPERIENCE, SKILLS });

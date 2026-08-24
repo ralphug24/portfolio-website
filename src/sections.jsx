@@ -24,7 +24,7 @@ function Home({ navigate }) {
               agentic AI, LLM evaluation, enterprise data, and product execution.
             </p>
             <div className="hero-actions reveal" data-delay="3">
-              <a href="#projects" className="btn btn-primary" onClick={(e) => go(e, "projects")}>
+              <a href="/projects" className="btn btn-primary" onClick={(e) => go(e, "projects")}>
                 See projects <Icon name="arrow" />
               </a>
               <a href={LINKS.cv} target="_self" rel="noreferrer" className="btn">
@@ -157,6 +157,14 @@ function About({ navigate }) {
           <div className="story-kicker">What I&rsquo;m building toward</div>
           <p>I&rsquo;m focused on technical program and AI product roles where technical depth, human-centered thinking, and disciplined execution come together to make complex AI systems useful, trustworthy, and adoptable.</p>
           <div className="about-close-actions"><button className="btn btn-primary" onClick={() => navigate("projects")}>Explore my work <Icon name="arrow" /></button><button className="btn" onClick={() => navigate("resume")}>View résumé <Icon name="arrow" /></button></div>
+        </div>
+
+        <div className="beyond-work reveal">
+          <div className="story-kicker">Beyond work</div>
+          <p className="beyond-work-intro">Outside of AI systems and technical programs, I enjoy tennis, strength training, exploring museums and aquariums, and finding new places to learn from.</p>
+          <div className="beyond-work-grid">
+            {BEYOND_WORK.map(item => <figure key={item.src}><img src={item.src} alt={item.alt} loading="lazy" /><figcaption>{item.caption}</figcaption></figure>)}
+          </div>
         </div>
       </div>
     </section>
