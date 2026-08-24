@@ -563,7 +563,9 @@ body[data-grain="true"]::before {
 .beyond-work-intro { max-width: 700px; color: var(--fg-dim); font-size: 16px; line-height: 1.55; margin: 0 0 24px; }
 .beyond-work-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
 .beyond-work-grid figure { margin: 0; border: 1px solid var(--line-soft); border-radius: 10px; overflow: hidden; background: var(--bg-elev); }
+.beyond-image-button { display: block; width: 100%; padding: 0; cursor: zoom-in; background: var(--bg-elev); }
 .beyond-work-grid img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; filter: saturate(.86); }
+.beyond-image-button:hover img { opacity: .82; }
 .beyond-work-grid figcaption { padding: 11px 12px 13px; color: var(--fg-mute); font-size: 11px; line-height: 1.4; }
 
 /* ============ research ============ */

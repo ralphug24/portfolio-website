@@ -83,6 +83,13 @@ function SocialIcons() {
 }
 
 function About({ navigate }) {
+  const [beyondLightbox, setBeyondLightbox] = React.useState(null);
+  React.useEffect(() => {
+    if (!beyondLightbox) return undefined;
+    const onKeyDown = (event) => { if (event.key === "Escape") setBeyondLightbox(null); };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [beyondLightbox]);
   return (
     <section className="section" id="about">
       <div className="container">
@@ -163,9 +170,10 @@ function About({ navigate }) {
           <div className="story-kicker">Beyond work</div>
           <p className="beyond-work-intro">Outside of AI systems and technical programs, I enjoy tennis, strength training, exploring museums and aquariums, and finding new places to learn from.</p>
           <div className="beyond-work-grid">
-            {BEYOND_WORK.map(item => <figure key={item.src}><img src={item.src} alt={item.alt} loading="lazy" /><figcaption>{item.caption}</figcaption></figure>)}
+            {BEYOND_WORK.map(item => <figure key={item.src}><button className="beyond-image-button" onClick={() => setBeyondLightbox({ ...item, zoom: 1 })} aria-label={`Zoom image: ${item.alt}`}><img src={item.src} alt={item.alt} loading="lazy" /></button><figcaption>{item.caption}</figcaption></figure>)}
           </div>
         </div>
+        {beyondLightbox && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Expanded personal photo" onClick={() => setBeyondLightbox(null)}><div className="lightbox-panel" onClick={(event) => event.stopPropagation()}><div className="lightbox-toolbar"><span>Beyond work</span><div><button onClick={() => setBeyondLightbox(v => ({ ...v, zoom: Math.max(.5, v.zoom - .25) }))} aria-label="Zoom out">−</button><button onClick={() => setBeyondLightbox(v => ({ ...v, zoom: 1 }))} aria-label="Reset zoom">Reset</button><button onClick={() => setBeyondLightbox(v => ({ ...v, zoom: Math.min(3, v.zoom + .25) }))} aria-label="Zoom in">+</button><button onClick={() => setBeyondLightbox(null)} aria-label="Close expanded image">×</button></div></div><div className="lightbox-stage"><img src={beyondLightbox.src} alt={beyondLightbox.alt} style={{ transform: `scale(${beyondLightbox.zoom})` }} /></div><p>{beyondLightbox.caption}</p></div></div>}
       </div>
     </section>
   );
