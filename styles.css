@@ -740,7 +740,8 @@ body[data-grain="true"]::before {
 .lightbox-toolbar button { min-width: 28px; padding: 5px 7px; border: 0; color: var(--fg-dim); background: transparent; font-family: var(--font-mono); font-size: 11px; cursor: pointer; }
 .lightbox-toolbar button:hover { color: var(--accent); }
 .lightbox-stage { display: grid; place-items: center; max-height: calc(100vh - 120px); overflow: auto; }
-.lightbox-stage img { display: block; max-width: 100%; max-height: calc(100vh - 180px); object-fit: contain; transform-origin: center; transition: transform .2s var(--ease); }
+.lightbox-stage img { display: block; max-width: 100%; max-height: calc(100vh - 180px); object-fit: contain; transform-origin: center; transition: transform .2s var(--ease); cursor: grab; touch-action: none; user-select: none; }
+.lightbox-stage img:active { cursor: grabbing; transition: none; }
 .lightbox-panel > p { color: var(--fg-dim); font-size: 12px; line-height: 1.45; margin: 10px 2px 0; text-align: center; }
 .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); margin-bottom: 28px; }
 .case-section { background: var(--bg); padding: 24px; }

@@ -170,10 +170,10 @@ function About({ navigate }) {
           <div className="story-kicker">Beyond work</div>
           <p className="beyond-work-intro">Outside of AI systems and technical programs, I enjoy tennis, strength training, exploring museums and aquariums, and finding new places to learn from.</p>
           <div className="beyond-work-grid">
-            {BEYOND_WORK.map(item => <figure key={item.src}><button className="beyond-image-button" onClick={() => setBeyondLightbox({ ...item, zoom: 1 })} aria-label={`Zoom image: ${item.alt}`}><img src={item.src} alt={item.alt} loading="lazy" /></button><figcaption>{item.caption}</figcaption></figure>)}
+            {BEYOND_WORK.map(item => <figure key={item.src}><button className="beyond-image-button" onClick={() => setBeyondLightbox({ ...item, zoom: 1, panX: 0, panY: 0 })} aria-label={`Zoom image: ${item.alt}`}><img src={item.src} alt={item.alt} loading="lazy" /></button><figcaption>{item.caption}</figcaption></figure>)}
           </div>
         </div>
-        {beyondLightbox && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Expanded personal photo" onClick={() => setBeyondLightbox(null)}><div className="lightbox-panel" onClick={(event) => event.stopPropagation()}><div className="lightbox-toolbar"><span>Beyond work</span><div><button onClick={() => setBeyondLightbox(v => ({ ...v, zoom: Math.max(.5, v.zoom - .25) }))} aria-label="Zoom out">−</button><button onClick={() => setBeyondLightbox(v => ({ ...v, zoom: 1 }))} aria-label="Reset zoom">Reset</button><button onClick={() => setBeyondLightbox(v => ({ ...v, zoom: Math.min(3, v.zoom + .25) }))} aria-label="Zoom in">+</button><button onClick={() => setBeyondLightbox(null)} aria-label="Close expanded image">×</button></div></div><div className="lightbox-stage"><img src={beyondLightbox.src} alt={beyondLightbox.alt} style={{ transform: `scale(${beyondLightbox.zoom})` }} /></div><p>{beyondLightbox.caption}</p></div></div>}
+        {beyondLightbox && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Expanded personal photo" onClick={() => setBeyondLightbox(null)}><div className="lightbox-panel" onClick={(event) => event.stopPropagation()}><div className="lightbox-toolbar"><span>Beyond work</span><div><button onClick={() => setBeyondLightbox(v => ({ ...v, zoom: Math.max(.5, v.zoom - .25) }))} aria-label="Zoom out">−</button><button onClick={() => setBeyondLightbox(v => ({ ...v, zoom: 1, panX: 0, panY: 0 }))} aria-label="Reset zoom">Reset</button><button onClick={() => setBeyondLightbox(v => ({ ...v, zoom: Math.min(3, v.zoom + .25) }))} aria-label="Zoom in">+</button><button onClick={() => setBeyondLightbox(null)} aria-label="Close expanded image">×</button></div></div><div className="lightbox-stage"><PanImage image={beyondLightbox} onChange={setBeyondLightbox} /></div><p>{beyondLightbox.caption}</p></div></div>}
       </div>
     </section>
   );
@@ -247,11 +247,51 @@ function ProjectDetail({ p, onBack }) {
       {p.detail.decisions && <div className="case-section case-wide"><span className="case-label">Key technical decisions</span><ul className="case-list">{p.detail.decisions.map(d => <li key={d}>{d}</li>)}</ul></div>}
       {p.detail.engineeringEvidence && <div className="case-section case-wide"><span className="case-label">Engineering evidence</span><ul className="case-list">{p.detail.engineeringEvidence.map(d => <li key={d}>{d}</li>)}</ul></div>}
       {p.detail.demonstrates && <div className="case-section case-wide"><span className="case-label">What this demonstrates</span><div className="case-capabilities">{p.detail.demonstrates.map(d => <span key={d}>{d}</span>)}</div></div>}
-      {p.visuals && <div className="case-artifacts"><span className="case-label">Selected project visuals</span><p className="case-note case-confidential-note"><strong>Confidentiality note:</strong> These images were generated, reconstructed, or sanitized to protect confidential information. They are public-safe representations of the work, not raw internal screenshots.</p><div className="case-gallery">{p.visuals.map(v => <figure key={v.src}><button className="case-image-button" onClick={() => setLightbox({ ...v, zoom: 1 })} aria-label={`Zoom image: ${v.alt}`}><img src={v.src} alt={v.alt} loading="lazy" /></button><figcaption>{v.caption}</figcaption></figure>)}</div></div>}
+      {p.visuals && <div className="case-artifacts"><span className="case-label">Selected project visuals</span><p className="case-note case-confidential-note"><strong>Confidentiality note:</strong> These images were generated, reconstructed, or sanitized to protect confidential information. They are public-safe representations of the work, not raw internal screenshots.</p><div className="case-gallery">{p.visuals.map(v => <figure key={v.src}><button className="case-image-button" onClick={() => setLightbox({ ...v, zoom: 1, panX: 0, panY: 0 })} aria-label={`Zoom image: ${v.alt}`}><img src={v.src} alt={v.alt} loading="lazy" /></button><figcaption>{v.caption}</figcaption></figure>)}</div></div>}
       <div className="project-stack">{p.stack.map(s => <span key={s} className="stack-tag">{s}</span>)}</div>
-      {lightbox && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Expanded project visual" onClick={() => setLightbox(null)}><div className="lightbox-panel" onClick={(event) => event.stopPropagation()}><div className="lightbox-toolbar"><span>Project visual</span><div><button onClick={() => setLightbox(v => ({ ...v, zoom: Math.max(.5, v.zoom - .25) }))} aria-label="Zoom out">−</button><button onClick={() => setLightbox(v => ({ ...v, zoom: 1 }))} aria-label="Reset zoom">Reset</button><button onClick={() => setLightbox(v => ({ ...v, zoom: Math.min(3, v.zoom + .25) }))} aria-label="Zoom in">+</button><button onClick={() => setLightbox(null)} aria-label="Close expanded image">×</button></div></div><div className="lightbox-stage"><img src={lightbox.src} alt={lightbox.alt} style={{ transform: `scale(${lightbox.zoom})` }} /></div><p>{lightbox.caption}</p></div></div>}
+      {lightbox && <div className="lightbox" role="dialog" aria-modal="true" aria-label="Expanded project visual" onClick={() => setLightbox(null)}><div className="lightbox-panel" onClick={(event) => event.stopPropagation()}><div className="lightbox-toolbar"><span>Project visual</span><div><button onClick={() => setLightbox(v => ({ ...v, zoom: Math.max(.5, v.zoom - .25) }))} aria-label="Zoom out">−</button><button onClick={() => setLightbox(v => ({ ...v, zoom: 1, panX: 0, panY: 0 }))} aria-label="Reset zoom">Reset</button><button onClick={() => setLightbox(v => ({ ...v, zoom: Math.min(3, v.zoom + .25) }))} aria-label="Zoom in">+</button><button onClick={() => setLightbox(null)} aria-label="Close expanded image">×</button></div></div><div className="lightbox-stage"><PanImage image={lightbox} onChange={setLightbox} /></div><p>{lightbox.caption}</p></div></div>}
     </article>
   );
+}
+
+function PanImage({ image, onChange }) {
+  const drag = React.useRef(null);
+  const pointers = React.useRef(new Map());
+  const pinch = React.useRef(null);
+  const clampZoom = (zoom) => Math.min(3, Math.max(.5, zoom));
+  const onPointerDown = (event) => {
+    pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    event.currentTarget.setPointerCapture(event.pointerId);
+    if (pointers.current.size === 2) {
+      const points = [...pointers.current.values()];
+      pinch.current = { distance: Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y), zoom: image.zoom };
+      drag.current = null;
+      return;
+    }
+    drag.current = { x: event.clientX, y: event.clientY, panX: image.panX || 0, panY: image.panY || 0 };
+  };
+  const onPointerMove = (event) => {
+    if (pointers.current.has(event.pointerId)) pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (pointers.current.size >= 2 && pinch.current) {
+      const points = [...pointers.current.values()];
+      const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+      onChange(value => ({ ...value, zoom: clampZoom(pinch.current.zoom * distance / pinch.current.distance) }));
+      return;
+    }
+    if (!drag.current) return;
+    onChange(value => ({ ...value, panX: drag.current.panX + event.clientX - drag.current.x, panY: drag.current.panY + event.clientY - drag.current.y }));
+  };
+  const onPointerUp = (event) => {
+    pointers.current.delete(event.pointerId);
+    if (pointers.current.size < 2) pinch.current = null;
+    drag.current = null;
+  };
+  const onWheel = (event) => {
+    if (!event.ctrlKey) return;
+    event.preventDefault();
+    onChange(value => ({ ...value, zoom: clampZoom(value.zoom * (event.deltaY < 0 ? 1.12 : .89)) }));
+  };
+  return <img src={image.src} alt={image.alt} draggable="false" onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={onPointerUp} onWheel={onWheel} style={{ transform: `translate(${image.panX || 0}px, ${image.panY || 0}px) scale(${image.zoom})` }} />;
 }
 
 function CaseFlow({ title, items }) {
