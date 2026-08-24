@@ -97,7 +97,7 @@ function About({ navigate }) {
           </div>
           <div className="prose reveal" data-delay="1">
             <p>
-              I&rsquo;m an <strong>Agentic AI and Human-Centered Computing researcher</strong>
+              I&rsquo;m an <strong>Agentic AI and Human-Centered Computing researcher</strong>{" "}
               focused on leading and building AI-enabled programs at the intersection of
               technical systems, cross-functional execution, data, and human-centered design.
             </p>

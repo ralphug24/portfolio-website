@@ -475,7 +475,7 @@ body[data-grain="true"]::before {
   overflow: hidden;
   background: var(--bg-elev);
   border: 1px solid var(--line-soft);
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   position: relative;
 }
 .about-photo {
@@ -485,7 +485,8 @@ body[data-grain="true"]::before {
 .about-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: var(--bg-sunken);
   display: block;
   filter: grayscale(0.15) contrast(1.02);
   transition: filter .4s var(--ease), transform .6s var(--ease);
