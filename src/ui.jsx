@@ -60,7 +60,7 @@ function Nav({ theme, setTheme, active, navigate }) {
     { id: "home", n: "00", label: "Home" },
     { id: "about", n: "01", label: "About" },
     { id: "projects", n: "02", label: "Projects" },
-    { id: "resume", n: "03", label: "Resume" },
+    { id: "resume", n: "03", label: "Experience" },
     { id: "publications", n: "04", label: "Publications" },
     { id: "blog", n: "05", label: "Blog" },
   ];

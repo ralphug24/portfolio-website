@@ -420,7 +420,7 @@ function Resume() {
   return (
     <section className="section" id="resume">
       <div className="container">
-        <SectionHead num="03" title="Resume" sub="/ cv · snapshot" />
+        <SectionHead num="03" title="Experience" sub="/ career · snapshot" />
         <div className="resume-top reveal">
           <p className="resume-intro">
             AI/ML technical program manager and human-centered AI practitioner with experience
