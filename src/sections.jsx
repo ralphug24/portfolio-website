@@ -423,14 +423,14 @@ function Resume() {
         <SectionHead num="03" title="Resume" sub="/ cv · snapshot" />
         <div className="resume-top reveal">
           <p className="resume-intro">
-            Agentic AI and human-centered computing researcher with experience leading
-            technical programs, AI-enabled product work, enterprise data initiatives,
-            and applied research. I translate ambiguous needs into structured
-            requirements, architecture recommendations, dashboards, and execution-ready
-            roadmaps.
+            AI/ML technical program manager and human-centered AI practitioner with experience
+            building LLM-powered workflows, AI-enabled product features, enterprise reporting
+            systems, and data platforms. I translate ambiguous stakeholder needs into technical
+            requirements, architecture recommendations, dashboards, evaluation workflows, and
+            execution-ready roadmaps.
           </p>
           <a href={LINKS.cv} target="_self" rel="noreferrer" className="btn btn-primary">
-            <Icon name="download" /> Download full CV
+            <Icon name="download" /> Download Resume
           </a>
         </div>
 
