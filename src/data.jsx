@@ -1,7 +1,7 @@
 // ============ data ============
 const PROFILE = {
   name: "Raphael Maris Ugboko",
-  role: "Agentic AI / AI Technical Program Manager",
+  role: "AI Systems Builder / Technical Program Leader",
   org: "Clemson University",
   location: "Clemson, SC",
   email: "ralphugboko@gmail.com",
@@ -17,12 +17,12 @@ const LINKS = {
 };
 
 const TOPICS = [
-  "Agentic AI", "Human-Centered AI", "Technical Program Manager",
-  "Enterprise Data", "LLM Evaluation", "AI Systems", "Product Execution",
+  "Agentic AI", "Human-Centered AI", "Technical Program Leadership",
+  "Enterprise AI & Data", "LLM Evaluation", "AI Systems", "Product Execution",
 ];
 
 const VALUE_PROPS = [
-  { label: "AI product delivery", text: "Translate ambiguous AI opportunities into requirements, experiments, and execution plans." },
+  { label: "AI systems & product delivery", text: "Translate ambiguous AI opportunities into requirements, experiments, working systems, and execution plans." },
   { label: "Human-centered systems", text: "Design workflows that improve judgment, accessibility, trust, and adoption." },
   { label: "Technical program leadership", text: "Align stakeholders, dependencies, data flows, and measurable outcomes across teams." },
 ];
@@ -50,9 +50,7 @@ const BEYOND_WORK = [
   { src: "assets/beyond-work/aquarium.png", alt: "Exploring an aquarium", caption: "Exploring aquariums and finding new things to learn." },
   { src: "assets/beyond-work/tennis.png", alt: "Playing tennis", caption: "Tennis, movement, and time away from the screen." },
   { src: "assets/beyond-work/bench-press.png", alt: "Strength training in the gym", caption: "Strength training as part of a regular routine." },
-  { src: "assets/beyond-work/deadlifts.png", alt: "Doing deadlifts at the gym", caption: "Building strength through consistent training." },
   { src: "assets/beyond-work/rope-climbing.jpg", alt: "Rope climbing at the gym", caption: "Trying something challenging and staying active." },
-  { src: "assets/beyond-work/zercher-squats.jpg", alt: "Doing Zercher squats", caption: "Strength work, consistency, and learning new movements." },
 ];
 
 const PUBLICATIONS = [

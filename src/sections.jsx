@@ -10,7 +10,7 @@ function Home({ navigate }) {
           <div>
             <div className="hero-eyebrow reveal">
               <span className="dot" />
-              <span>Agentic AI · AI Technical Program Management · Clemson</span>
+              <span>Agentic AI · Human-Centered AI · Technical Program Leadership</span>
             </div>
             <h1 className="hero-title reveal" data-delay="1">
               Agentic AI programs<br />
@@ -18,20 +18,17 @@ function Home({ navigate }) {
               execution <span className="serif">at scale.</span>
             </h1>
             <p className="hero-lede reveal" data-delay="2">
-              I&rsquo;m <strong>Ralph</strong> — an AI technical program manager and
-              human-centered AI researcher who turns ambiguous opportunities into
-              usable systems, clear roadmaps, and measurable outcomes. I work across
-              agentic AI, LLM evaluation, enterprise data, and product execution.
+              I&rsquo;m <strong>Ralph</strong> — an AI systems builder, technical program leader,
+              and Human-Centered Computing researcher who turns ambiguous opportunities into
+              usable systems, clear roadmaps, and measurable outcomes. I work across agentic AI,
+              LLM evaluation, enterprise data, and product execution.
             </p>
             <div className="hero-actions reveal" data-delay="3">
               <a href="/projects" className="btn btn-primary" onClick={(e) => go(e, "projects")}>
                 See projects <Icon name="arrow" />
               </a>
               <a href={LINKS.cv} target="_self" rel="noreferrer" className="btn">
-                <Icon name="download" /> Download CV
-              </a>
-              <a href={LINKS.email} className="btn btn-secondary">
-                Let&rsquo;s connect <Icon name="mail" width="14" height="14" />
+                <Icon name="download" /> Download Résumé
               </a>
               <SocialIcons />
             </div>
@@ -97,16 +94,16 @@ function About({ navigate }) {
           </div>
           <div className="prose reveal" data-delay="1">
             <p>
-              I&rsquo;m an <strong>Agentic AI and Human-Centered Computing researcher</strong>{" "}
-              focused on leading and building AI-enabled programs at the intersection of
-              technical systems, cross-functional execution, data, and human-centered design.
+              I&rsquo;m an <strong>AI systems builder, technical program leader, and Human-Centered
+              Computing Ph.D. researcher</strong> working at the intersection of agentic AI,
+              product development, enterprise technology, and human-centered design.
             </p>
             <p>
-              My background spans project delivery, banking and business intelligence,
-              enterprise technical program leadership, HCI research, AI product development,
-              and enterprise reporting. Across those settings, I translate ambiguous
-              stakeholder needs into requirements, workflows, architecture recommendations,
-              and execution-ready solutions.
+              My background spans engineering, financial services, business intelligence,
+              enterprise technology, HCI research, and AI product development. Across those
+              settings, I&rsquo;ve learned to translate ambiguous problems into requirements,
+              experiments, system architectures, and execution plans, then work across technical
+              and business teams to turn them into measurable outcomes.
             </p>
             <p>
               Today, I work on <strong>Quizzibility</strong>, an AI-powered platform for
@@ -129,7 +126,7 @@ function About({ navigate }) {
 
         <div className="career-story reveal">
           <div className="story-kicker">How the pieces connect</div>
-          <h3 className="story-title">A progression toward technical program leadership in AI</h3>
+          <h3 className="story-title">A progression toward building and leading AI systems</h3>
           <p className="story-intro">Each chapter added a capability I now use to move complex technical work forward.</p>
           <div className="career-timeline">
             {CAREER_PATH.map((item, i) => (
@@ -155,8 +152,8 @@ function About({ navigate }) {
         </div>
 
         <div className="about-close reveal">
-          <div className="story-kicker">What I&rsquo;m building toward</div>
-          <p>I&rsquo;m focused on technical program and AI product roles where technical depth, human-centered thinking, and disciplined execution come together to make complex AI systems useful, trustworthy, and adoptable.</p>
+          <div className="story-kicker">Where I&rsquo;m headed</div>
+          <p>I&rsquo;m building toward a career at the intersection of AI systems, product, and technical leadership, where human-centered thinking and disciplined execution make complex AI useful, trustworthy, and scalable.</p>
           <div className="about-close-actions"><button className="btn btn-primary" onClick={() => navigate("projects")}>Explore my work <Icon name="arrow" /></button><button className="btn" onClick={() => navigate("resume")}>View résumé <Icon name="arrow" /></button></div>
         </div>
 
@@ -334,7 +331,7 @@ BIO:
 - Professional experience includes AI systems development at Clemson, PMIS and enterprise reporting work at DC Water, digital banking and payments transformation at KPMG Nigeria, and business intelligence at INTELFORT Nigeria.
 - Core skills: technical program management, requirements gathering, SQL, Python, Power BI, Tableau, REST APIs, Oracle Primavera Unifier, Oracle Integration Cloud, LLM APIs, React, TypeScript, and PostgreSQL.
 - Technical interests: agentic systems, enterprise AI automation, AI copilots, developer tools, decision support, and trustworthy human-AI interaction.
-- Career interests: AI/ML Technical Program Manager, AI Product Operations, LLM Evaluation, AI Systems, and Enterprise AI Automation.
+- Career interests: Applied AI, AI Engineering, AI Product, AI/ML Technical Program Leadership, LLM Evaluation, Human-Centered AI, and Enterprise AI.
 - Philosophy: "The value of AI is not just in what it can do, but in how it changes what people do."
 
 QUESTION: ${question}`;
