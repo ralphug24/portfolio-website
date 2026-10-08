@@ -13,7 +13,7 @@ const LINKS = {
   linkedin: "https://www.linkedin.com/in/ralphugboko/",
   email: "mailto:ralphugboko@gmail.com",
   cv: "assets/RESUME_UGBOKO.pdf",
-  photo: "assets/ralph_portrait.jpg",
+  photo: "assets/ralph_portrait_updated.png",
 };
 
 const TOPICS = [
